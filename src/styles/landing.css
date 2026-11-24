@@ -95,12 +95,16 @@
 .landing-heading .landing-tag + h2 { margin-top: .32rem; }
 .landing-heading > p:last-child { max-width: 31em; margin: .5rem auto 0; color: var(--muted); font-size: var(--landing-copy-size); }
 .landing-service-grid { gap: var(--landing-gap); }
+.landing-service-card { display: grid; border-radius: var(--radius); text-decoration: none; }
 .landing-service-grid .card { min-height: clamp(14.375rem, 18vw, 19.5rem); gap: .4rem; padding: clamp(.85rem, 1.15vw, 1.25rem); box-shadow: none; }
 .landing-service-grid .card h3, .landing-feature h3 { font-size: clamp(.9rem, 1.1vw, 1.2rem); line-height: 1.45; }
 .landing-service-grid .icon-box { width: 2.4rem; height: 2.4rem; margin-bottom: .35rem; }
 .landing-service-grid .card p, .landing-news-grid p:not(.landing-tag) { font-size: var(--landing-detail-size); line-height: 1.45; }
 .landing-service-grid .text-link, .landing-feature .text-link { min-height: 2.2rem; font-size: var(--landing-detail-size); text-decoration: none; }
-.landing-service-grid .text-link:hover, .landing-feature .text-link:hover { text-decoration: underline; }
+.landing-service-card:is(:hover, :focus-visible) .card { background: var(--white); }
+.landing-service-card:is(:hover, :focus-visible) .icon-box { background: var(--green); color: var(--white); }
+.landing-service-card:is(:hover, :focus-visible) .text-link { color: var(--forest); }
+.landing-feature .text-link:hover { text-decoration: underline; }
 
 .landing-news { background: var(--mint); border-block: 1px solid var(--border); }
 .landing-news-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--landing-gap); }
@@ -222,6 +226,11 @@
 .landing-prototype-note { margin-top: .25rem; color: var(--mint); }
 
 @media (prefers-reduced-motion: no-preference) {
+  .landing-service-card .card { transition: background-color .18s ease; }
+  .landing-service-card .icon-box { transition: background-color .18s ease, color .18s ease; }
+  .landing-service-card .text-link svg { transition: transform .18s ease; }
+  .landing-service-card:is(:hover, :focus-visible) .text-link svg { transform: translateX(.375rem); }
+
   [data-scroll-state="pending"]:not(:focus-within) { opacity: 0; }
   [data-scroll-state="revealed"] {
     animation: landing-reveal .52s cubic-bezier(.22, 1, .36, 1) both;

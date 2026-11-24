@@ -130,10 +130,12 @@ export function Home() {
         </SectionHeading>
         <div className="card-grid card-grid-four landing-service-grid" data-scroll-stagger>
           {offerings.map(({ title, description, label, to, icon }) => (
-            <Card key={title} title={title} icon={icon}
-              action={<Link className="text-link" to={to}>{label} <ArrowRight {...iconProps} size={15} /></Link>}>
-              <p>{description}</p>
-            </Card>
+            <Link key={title} className="landing-service-card" to={to} aria-label={label}>
+              <Card title={title} icon={icon}
+                action={<span className="text-link">{label} <ArrowRight {...iconProps} size={15} /></span>}>
+                <p>{description}</p>
+              </Card>
+            </Link>
           ))}
         </div>
       </section>
