@@ -149,13 +149,12 @@ export function Home() {
             <article className="landing-feature" data-scroll-reveal>
               <div className="landing-feature-art">
                 <img src={anniversaryBanner} alt="" width="1660" height="448" loading="lazy" />
-                <span className="landing-tag">Anniversary</span>
               </div>
               <div className="landing-feature-copy">
-                <p className="landing-tag">Featured</p>
+                <span className="landing-feature-label">Feature</span>
                 <h3 lang="fil">Ika-31 Anibersaryo ng PhilHealth at National Health Insurance Month</h3>
                 <p>This February, we celebrate 31 years of providing Filipinos with quality and affordable health care coverage through our growing family of programs.</p>
-                <a className="text-link" href={links.anniversaryNews}>Read More <ArrowRight {...iconProps} size={15} /></a>
+                <a className="text-link" href={links.anniversaryNews}>Read More</a>
               </div>
             </article>
             <ul className="landing-updates" aria-label="Sample announcements from the Figma design" data-scroll-stagger>

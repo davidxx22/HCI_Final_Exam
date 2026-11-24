@@ -33,11 +33,6 @@
   background-image: var(--landing-texture);
   background-size: 1.875rem 1.875rem;
 }
-.landing-feature-art .landing-tag {
-  color: var(--yellow);
-  background: var(--forest);
-  border-color: #789e50;
-}
 .landing-hero {
   background-image: var(--landing-texture),
     radial-gradient(circle at 92% 15%, #ffffff06 0 10rem, transparent 10rem),
@@ -99,7 +94,7 @@
 .landing-service-grid .card { min-height: clamp(14.375rem, 18vw, 19.5rem); gap: .4rem; padding: clamp(.85rem, 1.15vw, 1.25rem); box-shadow: none; }
 .landing-service-grid .card h3, .landing-feature h3 { font-size: clamp(.9rem, 1.1vw, 1.2rem); line-height: 1.45; }
 .landing-service-grid .icon-box { width: 2.4rem; height: 2.4rem; margin-bottom: .35rem; }
-.landing-service-grid .card p, .landing-news-grid p:not(.landing-tag) { font-size: var(--landing-detail-size); line-height: 1.45; }
+.landing-service-grid .card p, .landing-news-grid p { font-size: var(--landing-detail-size); line-height: 1.45; }
 .landing-service-grid .text-link, .landing-feature .text-link { min-height: 2.2rem; font-size: var(--landing-detail-size); text-decoration: none; }
 .landing-service-card:is(:hover, :focus-visible) .card { background: var(--white); }
 .landing-service-card:is(:hover, :focus-visible) .icon-box { background: var(--green); color: var(--white); }
@@ -121,10 +116,10 @@
   overflow: hidden;
 }
 .landing-feature-art img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; clip-path: inset(0 25.4% 0 20%); }
-.landing-feature-art .landing-tag { position: absolute; bottom: .9rem; left: .9rem; }
 .landing-feature-copy { padding: clamp(.85rem, 1.15vw, 1.25rem); }
+.landing-feature-label { display: block; color: var(--ink); font-size: clamp(1rem, 1.25vw, 1.35rem); font-weight: 700; line-height: 1.35; }
 .landing-feature h3 { margin-top: .55rem; color: var(--forest); }
-.landing-feature p:not(.landing-tag) { margin-top: .52rem; color: var(--muted); }
+.landing-feature p { margin-top: .52rem; color: var(--muted); }
 .landing-feature .text-link { margin-top: .18rem; }
 .landing-updates, .landing-footer-nav ul { margin: 0; padding: 0; list-style: none; }
 .landing-updates { display: grid; gap: clamp(.6rem, .9vw, 1rem); }
