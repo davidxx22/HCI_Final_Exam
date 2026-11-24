@@ -61,7 +61,7 @@
 }
 .landing-hero-inner {
   display: grid;
-  grid-template-columns: minmax(0, .49fr) minmax(0, .41fr);
+  grid-template-columns: minmax(0, .49fr) minmax(0, .51fr);
   column-gap: 10%;
   align-items: start;
   padding-block: clamp(4.6rem, 5.75vw, 6.25rem) var(--landing-section-padding);
@@ -82,9 +82,9 @@
   font-size: var(--landing-detail-size);
 }
 .landing-hero-art {
-  width: 87%;
+  width: 77%;
   margin-top: clamp(1.8rem, 2.3vw, 2.5rem);
-  justify-self: center;
+  justify-self: end;
   overflow: hidden;
   border-radius: clamp(1.25rem, 1.6vw, 1.75rem);
   box-shadow: 0 1rem 1.8rem #18351c30;
