@@ -19,6 +19,7 @@ const pages = [
 
 const navigation = [
   { to: '/', label: 'Home' },
+  { to: '/about-us', label: 'About Us' },
   { to: '/benefits', label: 'Benefits' },
   { to: '/members', label: 'Members' },
   { to: '/partners', label: 'Partners' },
