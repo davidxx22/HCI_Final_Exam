@@ -158,9 +158,11 @@ export function Home() {
             </article>
             <ul className="landing-updates" aria-label="Sample announcements from the Figma design" data-scroll-stagger>
               {updates.map(({ date, month, title, description }) => (
-                <li className="landing-update" key={date}>
-                  <time dateTime={date}><strong>{date.slice(-2)}</strong><span>{month}</span></time>
-                  <div><h3>{title}</h3><p>{description}</p></div>
+                <li key={date}>
+                  <div className="landing-update">
+                    <time dateTime={date}><strong>{date.slice(-2)}</strong><span>{month}</span></time>
+                    <div><h3>{title}</h3><p>{description}</p></div>
+                  </div>
                 </li>
               ))}
             </ul>
