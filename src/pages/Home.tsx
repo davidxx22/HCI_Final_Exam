@@ -151,7 +151,6 @@ export function Home() {
                 <img src={anniversaryBanner} alt="" width="1660" height="448" loading="lazy" />
               </div>
               <div className="landing-feature-copy">
-                <span className="landing-feature-label">Feature</span>
                 <h3 lang="fil">Ika-31 Anibersaryo ng PhilHealth at National Health Insurance Month</h3>
                 <p>This February, we celebrate 31 years of providing Filipinos with quality and affordable health care coverage through our growing family of programs.</p>
                 <a className="text-link" href={links.anniversaryNews}>Read More</a>
