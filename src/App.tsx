@@ -68,7 +68,7 @@ function Header({ landing }: { landing: boolean }) {
         menuButton.current?.focus()
       }
     }}>
-      <div className={landing ? 'landing-wrap header-inner' : 'wrap header-inner'}>
+      <div className="header-inner">
         <Brand />
         <button className="menu-button" type="button" ref={menuButton}
           aria-controls="main-navigation" aria-expanded={open} onClick={() => setOpen(!open)}>
