@@ -23,6 +23,7 @@ export const links = {
   circulars: official + '/circulars/',
   advisories: official + '/advisories/',
   news: official + '/news/',
+  invitationsToBid: official + '/suppliers/iaeb/',
   anniversaryNews: official + '/news/up/article/2026/news_69925c2c0008f.php',
   jobs: official + '/about_us/vacancies/2025/',
   statements: official + '/ofclstmnts/2026/',

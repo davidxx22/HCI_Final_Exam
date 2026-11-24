@@ -1,8 +1,8 @@
 import { useEffect, useRef, type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import {
-  ArrowRight, Briefcase, CircleAlert, File, Heart, House,
-  Link as LinkIcon, MessageSquare, Monitor, Newspaper, Search, SquareCheckBig, Users,
+  ArrowRight, Briefcase, CircleAlert, ClipboardList, File, Heart, House,
+  Link as LinkIcon, MessageSquare, Monitor, Newspaper, SquareCheckBig, Users,
 } from 'lucide-react'
 import anniversaryBanner from '../assets/philhealth-anniversary-nhip.jpg'
 import { Card, iconProps } from '../components/UI'
@@ -41,11 +41,11 @@ const resources = [
   { title: 'Circulars', href: links.circulars, icon: File },
   { title: 'Advisories', href: links.advisories, icon: CircleAlert },
   { title: 'News', href: links.news, icon: Newspaper },
+  { title: 'IB', href: links.invitationsToBid, icon: ClipboardList, accessibleLabel: 'IB (Invitation to Bid)' },
   { title: 'Job Vacancies', href: links.jobs, icon: Briefcase },
   { title: 'Official Statements', href: links.statements, icon: MessageSquare },
   { title: 'YAKAP Issuances', href: links.yakapIssuances, icon: SquareCheckBig },
   { title: 'Joint Issuances', href: links.jointIssuances, icon: LinkIcon },
-  { title: 'Find a Facility', href: links.facilities, icon: Search },
 ]
 
 function SectionHeading({ id, title, children }: {
@@ -187,8 +187,8 @@ export function Home() {
           Find official documents, news, and resources in one click.
         </SectionHeading>
         <div className="landing-resource-grid" data-scroll-stagger>
-          {resources.map(({ title, href, icon: Icon }) => (
-            <a key={title} className="landing-resource" href={href}>
+          {resources.map(({ title, href, icon: Icon, accessibleLabel }) => (
+            <a key={title} className="landing-resource" href={href} aria-label={accessibleLabel}>
               <span className="icon-box"><Icon {...iconProps} size={25} /></span> {title}
             </a>
           ))}

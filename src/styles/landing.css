@@ -79,8 +79,10 @@
 .landing-service-grid .icon-box { width: 2.4rem; height: 2.4rem; margin-bottom: .35rem; }
 .landing-service-grid .card p, .landing-news-grid p { font-size: var(--landing-detail-size); line-height: 1.45; }
 .landing-service-grid .text-link, .landing-feature .text-link { min-height: 2.2rem; font-size: var(--landing-detail-size); text-decoration: none; }
-.landing-service-card:is(:hover, :focus-visible) .card { background: var(--white); }
-.landing-service-card:is(:hover, :focus-visible) .icon-box { background: var(--green); color: var(--white); }
+.landing-service-card:is(:hover, :focus-visible) .card,
+.landing-resource:is(:hover, :focus-visible) { background: var(--white); }
+.landing-service-card:is(:hover, :focus-visible) .icon-box,
+.landing-resource:is(:hover, :focus-visible) .icon-box { background: var(--green); color: var(--white); }
 .landing-service-card:is(:hover, :focus-visible) .text-link { color: var(--forest); }
 .landing-feature .text-link:hover { text-decoration: underline; }
 
@@ -174,7 +176,6 @@
   text-align: center;
   text-decoration: none;
 }
-.landing-resource:hover { background: var(--mint); border-color: var(--control-border); text-decoration: underline; }
 .landing-resource .icon-box { width: 3rem; height: 3rem; }
 
 .landing-footer { padding-block: var(--landing-section-padding) 1.1rem; font-size: var(--landing-detail-size); }
@@ -213,8 +214,8 @@
 .landing-prototype-note { margin-top: .25rem; color: var(--mint); }
 
 @media (prefers-reduced-motion: no-preference) {
-  .landing-service-card .card { transition: background-color .18s ease; }
-  .landing-service-card .icon-box { transition: background-color .18s ease, color .18s ease; }
+  .landing-service-card .card, .landing-resource { transition: background-color .18s ease; }
+  .landing-service-card .icon-box, .landing-resource .icon-box { transition: background-color .18s ease, color .18s ease; }
   .landing-service-card .text-link svg { transition: transform .18s ease; }
   .landing-service-card:is(:hover, :focus-visible) .text-link svg { transform: translateX(.375rem); }
 
