@@ -81,7 +81,7 @@ function Header({ landing }: { landing: boolean }) {
             ? <a key={item.to} href={item.to} onClick={() => setOpen(false)}>{item.label}</a>
             : <NavLink key={item.to} to={item.to} end onClick={() => setOpen(false)}>{item.label}</NavLink>)}
         </nav>
-        <button type="button" className="button button-primary header-service" disabled>Contact Us</button>
+        <Link to="/about-us" className="button button-primary header-service" onClick={() => setOpen(false)}>Contact Us</Link>
       </div>
     </header>
   )
