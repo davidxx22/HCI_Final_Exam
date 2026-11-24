@@ -243,6 +243,25 @@
 .landing-footer-legal nav { display: flex; flex-wrap: wrap; gap: .25rem 1rem; }
 .landing-prototype-note { margin-top: .25rem; color: var(--mint); }
 
+@media (prefers-reduced-motion: no-preference) {
+  [data-scroll-state="pending"]:not(:focus-within) { opacity: 0; }
+  [data-scroll-state="revealed"] {
+    animation: landing-reveal .52s cubic-bezier(.22, 1, .36, 1) both;
+  }
+  [data-scroll-state="revealed"]:focus-within {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  [data-scroll-stagger] > [data-scroll-state="revealed"]:nth-child(4n + 2) { animation-delay: .055s; }
+  [data-scroll-stagger] > [data-scroll-state="revealed"]:nth-child(4n + 3) { animation-delay: .11s; }
+  [data-scroll-stagger] > [data-scroll-state="revealed"]:nth-child(4n + 4) { animation-delay: .165s; }
+
+  @keyframes landing-reveal {
+    from { opacity: 0; transform: translateY(1.125rem); }
+    to { opacity: 1; transform: none; }
+  }
+}
+
 @media (max-width: 60rem) {
   .landing-header .main-nav { gap: .25rem .5rem; }
   .landing-header .main-nav a, .landing-header .header-service { min-height: 2.75rem; font-size: .9rem; }

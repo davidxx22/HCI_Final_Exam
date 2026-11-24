@@ -8,7 +8,7 @@ import { Home } from './pages/Home'
 import { About, Benefits, Partners, Members, NotFound } from './pages/InformationPages'
 import { Downloads } from './pages/Downloads'
 
-const navigation = [
+const pages = [
   { to: '/', label: 'Home', page: <Home /> },
   { to: '/about-us', label: 'About Us', page: <About /> },
   { to: '/benefits', label: 'Benefits', page: <Benefits /> },
@@ -17,12 +17,13 @@ const navigation = [
   { to: '/downloads', label: 'Downloads', page: <Downloads /> },
 ]
 
-const landingNavigation = [
+const navigation = [
   { to: '/', label: 'Home' },
-  { to: '/members', label: 'Members' },
   { to: '/benefits', label: 'Benefits' },
-  { to: links.services, label: 'Online Services' },
+  { to: '/members', label: 'Members' },
   { to: '/partners', label: 'Partners' },
+  { to: links.services, label: 'Online Services' },
+  { to: '/downloads', label: 'Downloads' },
 ]
 
 const landingFooterLinks = [
@@ -75,13 +76,11 @@ function Header({ landing }: { landing: boolean }) {
           {open ? 'Close menu' : 'Menu'}
         </button>
         <nav className={open ? 'main-nav is-open' : 'main-nav'} id="main-navigation" aria-label="Main navigation">
-          {(landing ? landingNavigation : navigation).map(item => item.to === links.services
-            ? <a key={item.to} href={item.to}>{item.label}</a>
+          {navigation.map(item => item.to === links.services
+            ? <a key={item.to} href={item.to} onClick={() => setOpen(false)}>{item.label}</a>
             : <NavLink key={item.to} to={item.to} end onClick={() => setOpen(false)}>{item.label}</NavLink>)}
         </nav>
-        {landing
-          ? <a href={links.memberPortal} className="button button-primary header-service">Login</a>
-          : <OfficialLink href={links.services} className="button button-primary header-service">Online services</OfficialLink>}
+        <a href={links.memberPortal} className="button button-primary header-service" onClick={() => setOpen(false)}>Login</a>
       </div>
     </header>
   )
@@ -161,7 +160,7 @@ export function App() {
   const main = useRef<HTMLElement>(null)
 
   useEffect(() => {
-    const page = navigation.find(item => item.to === pathname.toLowerCase().replace(/\/$/, '') || item.to === pathname.toLowerCase())
+    const page = pages.find(item => item.to === pathname.toLowerCase().replace(/\/$/, '') || item.to === pathname.toLowerCase())
     document.title = (page?.label ?? 'Page not found') + ' | PhilHealth redesign prototype'
     if (lastPath.current !== pathname) {
       lastPath.current = pathname
@@ -176,7 +175,7 @@ export function App() {
       <Header key={pathname} landing={landing} />
       <main id="main-content" ref={main} tabIndex={-1}>
         <Routes>
-          {navigation.map(item => <Route key={item.to} path={item.to} element={item.page} />)}
+          {pages.map(item => <Route key={item.to} path={item.to} element={item.page} />)}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

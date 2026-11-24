@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import { useEffect, useRef, type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import {
   ArrowRight, ArrowUpRight, Bell, Briefcase, Check, CircleAlert,
@@ -60,7 +60,7 @@ function SectionHeading({ id, label, title, icon: Icon, children }: {
   id: string; label: string; title: ReactNode; icon: LucideIcon; children: ReactNode
 }) {
   return (
-    <div className="landing-heading">
+    <div className="landing-heading" data-scroll-reveal>
       <p className="landing-tag"><Icon {...iconProps} size={13} /> {label}</p>
       <h2 id={id}>{title}</h2>
       <p>{children}</p>
@@ -82,8 +82,36 @@ function Stats({ items, className }: { items: typeof heroStats; className: strin
 }
 
 export function Home() {
+  const landing = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (!landing.current || typeof IntersectionObserver === 'undefined') return
+
+    const targets = [...landing.current.querySelectorAll('[data-scroll-reveal], [data-scroll-stagger] > *')]
+      .filter(target => target.getBoundingClientRect().top >= window.innerHeight)
+    if (!targets.length) return
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return
+        entry.target.setAttribute('data-scroll-state', 'revealed')
+        observer.unobserve(entry.target)
+      })
+    }, { rootMargin: '0px 0px -32px 0px' })
+
+    targets.forEach(target => {
+      target.setAttribute('data-scroll-state', 'pending')
+      observer.observe(target)
+    })
+
+    return () => {
+      observer.disconnect()
+      targets.forEach(target => target.removeAttribute('data-scroll-state'))
+    }
+  }, [])
+
   return (
-    <>
+    <div ref={landing}>
       <section className="landing-green landing-hero">
         <div className="landing-wrap landing-hero-inner">
           <div>
@@ -109,7 +137,7 @@ export function Home() {
         <SectionHeading id="offerings-heading" label="What We Offer" title={<>Everything You Need,<br /> All in One Place</>} icon={Clock}>
           From membership registration to benefit claims — access all PhilHealth services seamlessly.
         </SectionHeading>
-        <div className="card-grid card-grid-four landing-service-grid">
+        <div className="card-grid card-grid-four landing-service-grid" data-scroll-stagger>
           {offerings.map(({ title, description, label, to, icon }) => (
             <Card key={title} title={title} icon={icon}
               action={<Link className="text-link" to={to}>{label} <ArrowRight {...iconProps} size={15} /></Link>}>
@@ -125,7 +153,7 @@ export function Home() {
             Stay informed with the latest circulars, advisories, and news from PhilHealth.
           </SectionHeading>
           <div className="landing-news-grid">
-            <article className="landing-feature">
+            <article className="landing-feature" data-scroll-reveal>
               <div className="landing-feature-art">
                 <img src={anniversaryBanner} alt="" width="1660" height="448" loading="lazy" />
                 <span className="landing-tag">Anniversary</span>
@@ -137,7 +165,7 @@ export function Home() {
                 <a className="text-link" href={links.anniversaryNews}>Read More <ArrowRight {...iconProps} size={15} /></a>
               </div>
             </article>
-            <ul className="landing-updates" aria-label="Sample announcements from the Figma design">
+            <ul className="landing-updates" aria-label="Sample announcements from the Figma design" data-scroll-stagger>
               {updates.map(({ date, month, title, description }) => (
                 <li className="landing-update" key={date}>
                   <time dateTime={date}><strong>{date.slice(-2)}</strong><span>{month}</span></time>
@@ -150,7 +178,7 @@ export function Home() {
       </section>
 
       <section className="landing-section landing-green landing-coverage" id="why-philhealth" aria-labelledby="coverage-heading">
-        <div className="landing-wrap landing-coverage-inner">
+        <div className="landing-wrap landing-coverage-inner" data-scroll-stagger>
           <div>
             <p className="landing-tag">Why PhilHealth</p>
             <h2 id="coverage-heading">Universal Health Coverage for Every Filipino Family</h2>
@@ -172,7 +200,7 @@ export function Home() {
         <SectionHeading id="quick-access-heading" label="Resources" title="Quick Access" icon={GitFork}>
           Find official documents, news, and resources in one click.
         </SectionHeading>
-        <div className="landing-resource-grid">
+        <div className="landing-resource-grid" data-scroll-stagger>
           {resources.map(({ title, href, icon: Icon }) => (
             <a key={title} className="landing-resource" href={href}>
               <span className="icon-box"><Icon {...iconProps} size={25} /></span> {title}
@@ -180,6 +208,6 @@ export function Home() {
           ))}
         </div>
       </section>
-    </>
+    </div>
   )
 }
