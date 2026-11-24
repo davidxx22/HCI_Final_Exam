@@ -13,6 +13,10 @@ Maintain the six frontend prototype pages: Home, About Us, Benefits, Partners, M
 - Keep public URLs and structured form data in the content module and use the shared component and style layers.
 - Use the local site for QA. Run `npm run build` and check the affected interactions before updating the checklist. Record observed study findings and proposed changes separately.
 
+## Publishing
+
+After verifying each completed user-requested change, commit the intended files, push to `origin/main`, and verify the production deployment on Vercel.
+
 ## PAUSE and CONTINUE
 
 On **PAUSE**, stop development immediately. Stop active work owned by the current session where possible, and report the last completed step and anything still running or unverified. Preserve changes already on disk. On **CONTINUE**, inspect the checklist and current files, then resume the first unfinished step.

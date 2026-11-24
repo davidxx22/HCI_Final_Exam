@@ -21,7 +21,7 @@ export function Home() {
         <div className="wrap hero-inner">
           <div className="hero-copy">
             <p className="eyebrow hero-label">PhilHealth member services</p>
-            <h1 tabIndex={-1} data-page-heading lang="fil">Sa Bagong Pilipinas,<br /><em>Malayo Ako sa Sakit.</em></h1>
+            <h1 tabIndex={-1} data-page-heading lang="fil">Sa Bagong Pilipinas,<br /><em>Malayo Ako</em> sa&nbsp;Sakit.</h1>
             <p className="hero-description">Find out how to become a member, explore your health benefits, and get the PhilHealth forms you need.</p>
             <div className="button-row">
               <Link className="button button-yellow" to="/members">

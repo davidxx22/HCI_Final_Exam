@@ -45,7 +45,7 @@ function Header() {
           {navigation.map(item =>
             <NavLink key={item.to} to={item.to} end onClick={() => setOpen(false)}>{item.label}</NavLink>)}
         </nav>
-        <OfficialLink href={links.services} className="button button-outline header-service">Online services</OfficialLink>
+        <OfficialLink href={links.services} className="button button-primary header-service">Online services</OfficialLink>
       </div>
     </header>
   )
