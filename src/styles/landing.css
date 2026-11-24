@@ -48,7 +48,7 @@
   background-image: var(--landing-texture);
   background-size: 1.875rem 1.875rem;
 }
-.landing-green .landing-tag, .landing-feature-art .landing-tag {
+.landing-feature-art .landing-tag {
   color: var(--yellow);
   background: var(--forest);
   border-color: #789e50;
@@ -66,13 +66,7 @@
   align-items: start;
   padding-block: clamp(4.6rem, 5.75vw, 6.25rem) var(--landing-section-padding);
 }
-.hero-tag {
-  padding: .38rem .9rem;
-  font-size: var(--landing-detail-size);
-}
-.hero-tag span { width: .47rem; height: .47rem; flex: none; border-radius: 50%; background: var(--yellow); }
 .landing-hero h1 {
-  margin-top: clamp(1rem, 1.3vw, 1.45rem);
   color: var(--white);
   font-size: clamp(3.25rem, 4.8vw, 5.25rem);
   line-height: 1.12;
@@ -112,7 +106,8 @@
 
 .landing-offerings { padding-top: clamp(4.625rem, 5.78vw, 6.25rem); }
 .landing-heading { margin-bottom: clamp(1.65rem, 2.2vw, 2.25rem); text-align: center; }
-.landing-heading h2, .landing-coverage h2 { margin-top: .32rem; font-size: clamp(1.875rem, 2.4vw, 2.625rem); line-height: 1.36; letter-spacing: -.015em; }
+.landing-heading h2, .landing-coverage h2 { font-size: clamp(1.875rem, 2.4vw, 2.625rem); line-height: 1.36; letter-spacing: -.015em; }
+.landing-heading .landing-tag + h2 { margin-top: .32rem; }
 .landing-heading > p:last-child { max-width: 31em; margin: .5rem auto 0; color: var(--muted); font-size: var(--landing-copy-size); }
 .landing-service-grid { gap: var(--landing-gap); }
 .landing-service-grid .card { min-height: clamp(14.375rem, 18vw, 19.5rem); gap: .4rem; padding: clamp(.85rem, 1.15vw, 1.25rem); box-shadow: none; }
@@ -142,7 +137,7 @@
 .landing-feature h3 { margin-top: .55rem; color: var(--forest); }
 .landing-feature p:not(.landing-tag) { margin-top: .52rem; color: var(--muted); }
 .landing-feature .text-link { margin-top: .18rem; }
-.landing-updates, .landing-coverage-list, .landing-footer-nav ul { margin: 0; padding: 0; list-style: none; }
+.landing-updates, .landing-footer-nav ul { margin: 0; padding: 0; list-style: none; }
 .landing-updates { display: grid; gap: clamp(.6rem, .9vw, 1rem); }
 .landing-update {
   display: grid;
@@ -170,11 +165,8 @@
 
 .landing-coverage { scroll-margin-top: calc(var(--landing-nav-height) + 1rem); }
 .landing-coverage-inner { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); align-items: center; gap: var(--landing-gap); }
-.landing-coverage h2 { margin-top: 1rem; max-width: 12em; color: var(--white); }
+.landing-coverage h2 { max-width: 12em; color: var(--white); }
 .landing-coverage-description { margin-top: .7rem; }
-.landing-coverage-list { display: grid; gap: .6rem; margin-top: 1.3rem; font-size: var(--landing-copy-size); }
-.landing-coverage-list li { display: flex; align-items: flex-start; gap: .32rem; }
-.landing-coverage-list span { display: grid; place-items: center; flex: none; width: 1.2rem; height: 1.2rem; border-radius: 50%; background: var(--yellow); color: var(--dark); }
 .landing-coverage .landing-actions { margin-top: 1.3rem; }
 .landing-coverage-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .85rem; }
 .landing-coverage-stats div {

@@ -1,9 +1,8 @@
 import { useEffect, useRef, type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import {
-  ArrowRight, ArrowUpRight, Bell, Briefcase, Check, CircleAlert,
-  Clock, File, GitFork, Heart, House, Link as LinkIcon, MessageSquare, Monitor,
-  Newspaper, Search, SquareCheckBig, UserRoundPlus, Users, type LucideIcon,
+  ArrowRight, ArrowUpRight, Briefcase, CircleAlert, File, GitFork, Heart, House,
+  Link as LinkIcon, MessageSquare, Monitor, Newspaper, Search, SquareCheckBig, UserRoundPlus, Users,
 } from 'lucide-react'
 import anniversaryBanner from '../assets/philhealth-anniversary-nhip.jpg'
 import { Card, iconProps } from '../components/UI'
@@ -23,13 +22,6 @@ const updates = [
   { date: '2026-03-10', month: 'Mar', title: 'New Online Payment Channels Available', description: 'Members can now pay premiums via GCash, Maya, and major e-banking platforms.' },
   { date: '2026-03-01', month: 'Mar', title: 'Unclaimed Benefits — Check the List', description: 'Review the updated list of unclaimed refunds and reimbursements from 2023–2024.' },
   { date: '2026-02-20', month: 'Feb', title: 'Digital ID Integration with PhilSys', description: 'Your PhilSys ID can now be used to access PhilHealth benefits and services at accredited facilities.' },
-]
-
-const coverageItems = [
-  { id: 1, label: 'In-patient and out-patient care coverage' },
-  { id: 2, label: 'In-patient and out-patient care coverage' },
-  { id: 3, label: 'In-patient and out-patient care coverage' },
-  { id: 4, label: 'In-patient and out-patient care coverage' },
 ]
 
 const heroStats = [
@@ -56,12 +48,12 @@ const resources = [
   { title: 'Find a Facility', href: links.facilities, icon: Search },
 ]
 
-function SectionHeading({ id, label, title, icon: Icon, children }: {
-  id: string; label: string; title: ReactNode; icon: LucideIcon; children: ReactNode
+function SectionHeading({ id, title, badge, children }: {
+  id: string; title: ReactNode; badge?: ReactNode; children: ReactNode
 }) {
   return (
     <div className="landing-heading" data-scroll-reveal>
-      <p className="landing-tag"><Icon {...iconProps} size={13} /> {label}</p>
+      {badge}
       <h2 id={id}>{title}</h2>
       <p>{children}</p>
     </div>
@@ -115,7 +107,6 @@ export function Home() {
       <section className="landing-green landing-hero">
         <div className="landing-wrap landing-hero-inner">
           <div>
-            <p className="landing-tag hero-tag"><span aria-hidden="true" /> 31st Anniversary · YAKAP Program</p>
             <h1 tabIndex={-1} data-page-heading lang="fil">
               <span>Sa Bagong</span> <span>Pilipinas,</span> <em>Malayo Ako</em> <span>sa Sakit.</span>
             </h1>
@@ -134,7 +125,7 @@ export function Home() {
       </section>
 
       <section className="landing-wrap landing-section landing-offerings" aria-labelledby="offerings-heading">
-        <SectionHeading id="offerings-heading" label="What We Offer" title={<>Everything You Need,<br /> All in One Place</>} icon={Clock}>
+        <SectionHeading id="offerings-heading" title={<>Everything You Need,<br /> All in One Place</>}>
           From membership registration to benefit claims — access all PhilHealth services seamlessly.
         </SectionHeading>
         <div className="card-grid card-grid-four landing-service-grid" data-scroll-stagger>
@@ -149,7 +140,7 @@ export function Home() {
 
       <section className="landing-section landing-news" aria-labelledby="announcements-heading">
         <div className="landing-wrap">
-          <SectionHeading id="announcements-heading" label="Latest Updates" title="Announcements & Highlights" icon={Bell}>
+          <SectionHeading id="announcements-heading" title="Announcements & Highlights">
             Stay informed with the latest circulars, advisories, and news from PhilHealth.
           </SectionHeading>
           <div className="landing-news-grid">
@@ -180,14 +171,8 @@ export function Home() {
       <section className="landing-section landing-green landing-coverage" id="why-philhealth" aria-labelledby="coverage-heading">
         <div className="landing-wrap landing-coverage-inner" data-scroll-stagger>
           <div>
-            <p className="landing-tag">Why PhilHealth</p>
             <h2 id="coverage-heading">Universal Health Coverage for Every Filipino Family</h2>
             <p className="landing-coverage-description">The YAKAP (Your All-Encompassing Komprehensibong Assistance Para sa Lahat) program ensures that no Filipino is left behind — from the poorest communities to employed professionals.</p>
-            <ul className="landing-coverage-list">
-              {coverageItems.map(({ id, label }) => (
-                <li key={id}><span><Check {...iconProps} size={15} /></span>{label}</li>
-              ))}
-            </ul>
             <div className="landing-actions">
               <Link className="button button-yellow" to="/members"><UserRoundPlus {...iconProps} size={17} /> Become a Member</Link>
             </div>
@@ -197,7 +182,8 @@ export function Home() {
       </section>
 
       <section className="landing-wrap landing-section" aria-labelledby="quick-access-heading">
-        <SectionHeading id="quick-access-heading" label="Resources" title="Quick Access" icon={GitFork}>
+        <SectionHeading id="quick-access-heading" title="Quick Access"
+          badge={<p className="landing-tag"><GitFork {...iconProps} size={13} /> Resources</p>}>
           Find official documents, news, and resources in one click.
         </SectionHeading>
         <div className="landing-resource-grid" data-scroll-stagger>
