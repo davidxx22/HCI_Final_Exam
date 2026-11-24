@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
-import { HeartPulse, Menu, X } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import { Link, NavLink, Route, Routes, useLocation } from 'react-router-dom'
+import philHealthLogo from './assets/philhealth-logo.png'
 import { iconProps, OfficialLink } from './components/UI'
 import { links } from './content/philhealth'
 import { Home, About, Benefits, Partners, Members, NotFound } from './pages/InformationPages'
@@ -18,8 +19,7 @@ const navigation = [
 function Brand() {
   return (
     <Link to="/" className="brand" aria-label="PhilHealth home">
-      <span className="brand-icon"><HeartPulse {...iconProps} size={24} /></span>
-      <span>PhilHealth<span className="brand-subtitle">Philippine Health Insurance Corporation</span></span>
+      <img src={philHealthLogo} alt="" width="402" height="122" />
     </Link>
   )
 }
