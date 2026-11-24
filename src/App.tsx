@@ -142,13 +142,11 @@ function LandingFooter() {
         </div>
         <div className="landing-footer-legal">
           <p>© 2026 Philippine Health Insurance Corporation. All rights reserved. By @Zel</p>
-          <nav aria-label="Legal and contact links">
-            <a href={links.contact}>Contact Us</a>
+          <nav aria-label="Legal links">
             <a href={links.disclaimer}>Disclaimer</a>
             <a href={links.privacy}>Privacy Notice</a>
           </nav>
         </div>
-        <p className="landing-prototype-note">Student HCI prototype. Sample announcements and figures from the Figma design.</p>
       </div>
     </footer>
   )

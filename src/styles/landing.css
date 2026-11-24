@@ -211,7 +211,6 @@
   color: var(--mint);
 }
 .landing-footer-legal nav { display: flex; flex-wrap: wrap; gap: .25rem 1rem; }
-.landing-prototype-note { margin-top: .25rem; color: var(--mint); }
 
 @media (prefers-reduced-motion: no-preference) {
   .landing-service-card .card, .landing-resource { transition: background-color .18s ease; }
