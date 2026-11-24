@@ -1,70 +1,11 @@
 import { useSearchParams, Link } from 'react-router-dom'
 import {
-  BedDouble, Building2, ClipboardList, CreditCard, FileDown, FileText,
-  Handshake, HeartPulse, Hospital, Landmark, Laptop, MapPin, Megaphone,
-  SearchX, ShieldPlus, Stethoscope, UserRoundPlus, Users,
+  BedDouble, Building2, ClipboardList, CreditCard,
+  Handshake, HeartPulse, Hospital, Landmark, Laptop, MapPin,
+  SearchX, ShieldPlus, Stethoscope, Users,
 } from 'lucide-react'
 import { Card, CategorySelect, Disclosure, iconProps, OfficialLink, PageIntro } from '../components/UI'
 import { links } from '../content/philhealth'
-
-const tasks = [
-  { title: 'Membership', description: 'Find your member category and registration forms.', label: 'View membership steps', to: '/members', icon: UserRoundPlus },
-  { title: 'Benefits', description: 'Explore health benefits by type of care.', label: 'Explore benefits', to: '/benefits', icon: HeartPulse },
-  { title: 'Downloads', description: 'Find official membership, claims, and employer forms.', label: 'Find a form', to: '/downloads', icon: FileDown },
-  { title: 'Partners', description: 'Find accredited facilities and other PhilHealth partners.', label: 'Explore partners', to: '/partners', icon: Handshake },
-]
-
-export function Home() {
-  return (
-    <>
-      <section className="home-hero">
-        <div className="wrap hero-inner">
-          <div className="hero-copy">
-            <p className="eyebrow hero-label">PhilHealth member services</p>
-            <h1 tabIndex={-1} data-page-heading lang="fil">Sa Bagong Pilipinas,<br /><em>Malayo Ako</em> sa&nbsp;Sakit.</h1>
-            <p className="hero-description">Find out how to become a member, explore your health benefits, and get the PhilHealth forms you need.</p>
-            <div className="button-row">
-              <Link className="button button-yellow" to="/members">
-                <UserRoundPlus {...iconProps} /> View membership steps
-              </Link>
-              <Link className="button button-on-dark" to="/benefits">Explore benefits</Link>
-            </div>
-          </div>
-          <figure className="campaign">
-            <img src={import.meta.env.BASE_URL + 'philhealth-anniversary.png'} alt="PhilHealth's 31st anniversary campaign: Ka-YAKAP ang Pilipino sa Kalusugang Segurado."
-              width="821" height="449" fetchPriority="high" />
-          </figure>
-        </div>
-      </section>
-      <section className="wrap section-block">
-        <div className="section-heading">
-          <h2>How can we help you?</h2>
-          <p>Go straight to the service or information you need.</p>
-        </div>
-        <div className="card-grid card-grid-four">
-          {tasks.map(task =>
-            <Card key={task.to} title={task.title} icon={task.icon}
-              action={<Link className="text-link" to={task.to}>{task.label}</Link>}>
-              <p>{task.description}</p>
-            </Card>)}
-        </div>
-      </section>
-      <section className="home-resources">
-        <div className="wrap section-block">
-          <div className="section-heading">
-            <h2>PhilHealth resources</h2>
-            <p>Get the latest information directly from PhilHealth.</p>
-          </div>
-          <div className="resource-grid">
-            <OfficialLink className="resource-link" href={links.facilities}><MapPin {...iconProps} /> Find an accredited facility</OfficialLink>
-            <OfficialLink className="resource-link" href={links.advisories}><Megaphone {...iconProps} /> Read advisories</OfficialLink>
-            <OfficialLink className="resource-link" href={links.news}><FileText {...iconProps} /> Read PhilHealth news</OfficialLink>
-          </div>
-        </div>
-      </section>
-    </>
-  )
-}
 
 export function About() {
   return (
@@ -181,11 +122,11 @@ export function Members() {
         </div>
         <div className="card-grid card-grid-two">
           <Card title="Direct contributors" icon={Users}
-            action={<OfficialLink href={links.members + '#:~:text=Direct%20Contributors'}>View direct contributor information</OfficialLink>}>
+            action={<OfficialLink href={links.directContributors}>View direct contributor information</OfficialLink>}>
             <p>People who pay premiums directly or through an employer, such as employed and self-earning members.</p>
           </Card>
           <Card title="Indirect contributors" icon={ShieldPlus}
-            action={<OfficialLink href={links.members + '#:~:text=Indirect%20Contributors'}>View indirect contributor information</OfficialLink>}>
+            action={<OfficialLink href={links.indirectContributors}>View indirect contributor information</OfficialLink>}>
             <p>People in eligible categories whose premiums are subsidized under the program.</p>
           </Card>
         </div>

@@ -8,6 +8,7 @@ import '@fontsource/poppins/latin-600.css'
 import '@fontsource/poppins/latin-700.css'
 import '@fontsource/playfair-display/latin-700.css'
 import './styles/main.css'
+import './styles/landing.css'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
