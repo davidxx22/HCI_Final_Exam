@@ -59,11 +59,11 @@ function Brand() {
   )
 }
 
-function Header({ landing }: { landing: boolean }) {
+function Header() {
   const [open, setOpen] = useState(false)
   const menuButton = useRef<HTMLButtonElement>(null)
   return (
-    <header className={landing ? 'site-header landing-header' : 'site-header'} onKeyDown={event => {
+    <header className="site-header" onKeyDown={event => {
       if (event.key === 'Escape' && open) {
         setOpen(false)
         menuButton.current?.focus()
@@ -173,7 +173,7 @@ export function App() {
   return (
     <>
       <a className="skip-link" href="#main-content">Skip to main content</a>
-      <Header key={pathname} landing={landing} />
+      <Header key={pathname} />
       <main id="main-content" ref={main} tabIndex={-1}>
         <Routes>
           {pages.map(item => <Route key={item.to} path={item.to} element={item.page} />)}
