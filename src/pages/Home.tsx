@@ -1,7 +1,7 @@
 import { useEffect, useRef, type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import {
-  ArrowRight, ArrowUpRight, Briefcase, CircleAlert, File, GitFork, Heart, House,
+  ArrowRight, Briefcase, CircleAlert, File, GitFork, Heart, House,
   Link as LinkIcon, MessageSquare, Monitor, Newspaper, Search, SquareCheckBig, UserRoundPlus, Users,
 } from 'lucide-react'
 import anniversaryBanner from '../assets/philhealth-anniversary-nhip.jpg'
@@ -112,8 +112,8 @@ export function Home() {
             </h1>
             <p className="landing-hero-description">The Philippine Health Insurance Corporation ensures every Filipino has access to quality, accessible, and affordable health care services through its comprehensive national health insurance program.</p>
             <div className="button-row landing-actions">
-              <a className="button button-yellow" href={links.registration}><UserRoundPlus {...iconProps} size={17} /> Register Now</a>
-              <a className="button button-on-dark" href="#why-philhealth">Learn More <ArrowUpRight {...iconProps} size={15} /></a>
+              <a className="button button-yellow" href={links.registration}>Become a member</a>
+              <a className="button button-on-dark" href="#why-philhealth">Learn More</a>
             </div>
             <Stats items={heroStats} className="landing-hero-stats" />
           </div>
