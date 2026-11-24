@@ -174,7 +174,7 @@ export function Home() {
         <div className="landing-wrap landing-coverage-inner" data-scroll-stagger>
           <div>
             <h2 id="coverage-heading">Universal Health Coverage for Every Filipino Family</h2>
-            <p className="landing-coverage-description">The YAKAP (Your All-Encompassing Komprehensibong Assistance Para sa Lahat) program ensures that no Filipino is left behind — from the poorest communities to employed professionals.</p>
+            <p className="landing-coverage-description">The Yaman ng Kalusugan Program (YAKAP) ensures that no Filipino is left behind — from the poorest communities to employed professionals.</p>
             <div className="landing-actions">
               <Link className="button button-yellow" to="/members"><UserRoundPlus {...iconProps} size={17} /> Become a Member</Link>
             </div>
