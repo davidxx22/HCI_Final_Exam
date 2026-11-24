@@ -11,22 +11,6 @@
 .landing-wrap { width: min(100% - 3rem, var(--landing-width)); margin-inline: auto; }
 .landing-section { padding-block: var(--landing-section-padding); }
 
-.landing-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: .32rem;
-  width: fit-content;
-  max-width: 100%;
-  padding: .2rem .62rem;
-  border: 1px solid #b7ccb9;
-  border-radius: 2rem;
-  color: var(--forest);
-  background: var(--mint);
-  font-size: clamp(.6875rem, .78vw, .85rem);
-  font-weight: 600;
-  line-height: 1.35;
-  text-transform: uppercase;
-}
 .landing-green {
   color: var(--white);
   background-color: var(--green);
@@ -87,7 +71,6 @@
 .landing-offerings { padding-top: clamp(4.625rem, 5.78vw, 6.25rem); }
 .landing-heading { margin-bottom: clamp(1.65rem, 2.2vw, 2.25rem); text-align: center; }
 .landing-heading h2, .landing-coverage h2 { font-size: clamp(1.875rem, 2.4vw, 2.625rem); line-height: 1.36; letter-spacing: -.015em; }
-.landing-heading .landing-tag + h2 { margin-top: .32rem; }
 .landing-heading > p:last-child { max-width: 31em; margin: .5rem auto 0; color: var(--muted); font-size: var(--landing-copy-size); }
 .landing-service-grid { gap: var(--landing-gap); }
 .landing-service-card { display: grid; border-radius: var(--radius); text-decoration: none; }

@@ -1,8 +1,8 @@
 import { useEffect, useRef, type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import {
-  ArrowRight, Briefcase, CircleAlert, File, GitFork, Heart, House,
-  Link as LinkIcon, MessageSquare, Monitor, Newspaper, Search, SquareCheckBig, UserRoundPlus, Users,
+  ArrowRight, Briefcase, CircleAlert, File, Heart, House,
+  Link as LinkIcon, MessageSquare, Monitor, Newspaper, Search, SquareCheckBig, Users,
 } from 'lucide-react'
 import anniversaryBanner from '../assets/philhealth-anniversary-nhip.jpg'
 import { Card, iconProps } from '../components/UI'
@@ -48,12 +48,11 @@ const resources = [
   { title: 'Find a Facility', href: links.facilities, icon: Search },
 ]
 
-function SectionHeading({ id, title, badge, children }: {
-  id: string; title: ReactNode; badge?: ReactNode; children: ReactNode
+function SectionHeading({ id, title, children }: {
+  id: string; title: ReactNode; children: ReactNode
 }) {
   return (
     <div className="landing-heading" data-scroll-reveal>
-      {badge}
       <h2 id={id}>{title}</h2>
       <p>{children}</p>
     </div>
@@ -176,7 +175,7 @@ export function Home() {
             <h2 id="coverage-heading">Universal Health Coverage for Every Filipino Family</h2>
             <p className="landing-coverage-description">The Yaman ng Kalusugan Program (YAKAP) ensures that no Filipino is left behind — from the poorest communities to employed professionals.</p>
             <div className="landing-actions">
-              <Link className="button button-yellow" to="/members"><UserRoundPlus {...iconProps} size={17} /> Become a Member</Link>
+              <Link className="button button-yellow" to="/members">Become a Member</Link>
             </div>
           </div>
           <Stats items={coverageStats} className="landing-coverage-stats" />
@@ -184,8 +183,7 @@ export function Home() {
       </section>
 
       <section className="landing-wrap landing-section" aria-labelledby="quick-access-heading">
-        <SectionHeading id="quick-access-heading" title="Quick Access"
-          badge={<p className="landing-tag"><GitFork {...iconProps} size={13} /> Resources</p>}>
+        <SectionHeading id="quick-access-heading" title="Quick Access">
           Find official documents, news, and resources in one click.
         </SectionHeading>
         <div className="landing-resource-grid" data-scroll-stagger>
