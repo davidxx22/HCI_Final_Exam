@@ -192,10 +192,29 @@ h2[tabindex="-1"] { scroll-margin-top: calc(var(--header-height) + 1.25rem); }
 .footer-legal nav { display: flex; flex-wrap: wrap; gap: .25rem 1rem; }
 @media (prefers-reduced-motion: no-preference) {
   .button, .main-nav a, .benefit-filter label span { transition: background-color .18s ease, color .18s ease, border-color .18s ease; }
-  .page-intro { animation: page-intro-in .3s ease-out both; }
-  @keyframes page-intro-in {
-    from { opacity: .6; transform: translateY(.3rem); }
-    to { opacity: 1; transform: none; }
+  .page-content { animation: page-enter .24s ease-out; }
+  .card, .landing-resource { transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease; }
+
+  [data-scroll-state="revealed"] { animation: content-reveal .36s cubic-bezier(.22, 1, .36, 1) backwards; }
+  [data-scroll-state="revealed"]:focus-within { opacity: 1 !important; translate: none !important; }
+  :is(.card-grid, [data-scroll-stagger]) > [data-scroll-state="revealed"]:nth-child(4n + 2) { animation-delay: .045s; }
+  :is(.card-grid, [data-scroll-stagger]) > [data-scroll-state="revealed"]:nth-child(4n + 3) { animation-delay: .09s; }
+  :is(.card-grid, [data-scroll-stagger]) > [data-scroll-state="revealed"]:nth-child(4n + 4) { animation-delay: .135s; }
+
+  @keyframes page-enter {
+    from { opacity: .85; }
+    to { opacity: 1; }
+  }
+  @keyframes content-reveal {
+    from { opacity: .82; translate: 0 .65rem; }
+    to { opacity: 1; translate: none; }
+  }
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  :is(.card, .landing-resource):hover {
+    transform: translateY(-.2rem);
+    border-color: #a1c7a2;
+    box-shadow: 0 6px 20px #18351c15;
   }
 }
 @media (max-width: 72rem) {

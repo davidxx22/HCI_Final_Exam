@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react'
+import { useLayoutEffect, useRef, useState, type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import {
   ArrowRight, Briefcase, CircleAlert, ClipboardList, File, Heart, House,
@@ -135,36 +135,8 @@ function CoverageStats() {
 }
 
 export function Home() {
-  const landing = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    if (!landing.current || typeof IntersectionObserver === 'undefined') return
-
-    const targets = [...landing.current.querySelectorAll('[data-scroll-reveal], [data-scroll-stagger] > *')]
-      .filter(target => target.getBoundingClientRect().top >= window.innerHeight)
-    if (!targets.length) return
-
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return
-        entry.target.setAttribute('data-scroll-state', 'revealed')
-        observer.unobserve(entry.target)
-      })
-    }, { rootMargin: '0px 0px -32px 0px' })
-
-    targets.forEach(target => {
-      target.setAttribute('data-scroll-state', 'pending')
-      observer.observe(target)
-    })
-
-    return () => {
-      observer.disconnect()
-      targets.forEach(target => target.removeAttribute('data-scroll-state'))
-    }
-  }, [])
-
   return (
-    <div ref={landing}>
+    <>
       <section className="landing-green landing-hero">
         <div className="landing-wrap landing-hero-inner">
           <div>
@@ -256,6 +228,6 @@ export function Home() {
           ))}
         </div>
       </section>
-    </div>
+    </>
   )
 }

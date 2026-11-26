@@ -139,15 +139,42 @@ export function App() {
     }
   }, [pathname, hash])
 
+  useEffect(() => {
+    const content = main.current
+    const motion = window.matchMedia('(prefers-reduced-motion: no-preference)')
+    if (!content || !motion.matches || typeof IntersectionObserver === 'undefined') return
+
+    const targets = content.querySelectorAll(
+      '[data-scroll-reveal], [data-scroll-stagger] > *, .card:not(.landing-service-card > .card)',
+    )
+    if (!targets.length) return
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(({ isIntersecting, target }) => {
+        if (!isIntersecting) return
+        target.setAttribute('data-scroll-state', 'revealed')
+        observer.unobserve(target)
+      })
+    }, { rootMargin: '0px 0px -24px 0px' })
+    targets.forEach(target => observer.observe(target))
+
+    return () => {
+      observer.disconnect()
+      targets.forEach(target => target.removeAttribute('data-scroll-state'))
+    }
+  }, [pathname])
+
   return (
     <>
       <a className="skip-link" href="#main-content">Skip to main content</a>
       <Header key={pathname} />
       <main id="main-content" ref={main} tabIndex={-1}>
-        <Routes>
-          {pages.map(item => <Route key={item.to} path={item.to} element={item.page} />)}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <div className="page-content" key={pathname}>
+          <Routes>
+            {pages.map(item => <Route key={item.to} path={item.to} element={item.page} />)}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </div>
       </main>
       <Footer />
     </>
