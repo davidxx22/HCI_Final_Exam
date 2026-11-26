@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { FileDown, FileText, SearchX, X } from 'lucide-react'
+import { FileText, SearchX, X } from 'lucide-react'
 import { useSearchParams } from 'react-router-dom'
 import { CategorySelect, iconProps, OfficialLink, PageIntro, SearchField } from '../components/UI'
 import { formCategories, forms, links, type OfficialForm } from '../content/philhealth'
@@ -66,7 +66,7 @@ export function Downloads() {
 
   return (
     <>
-      <PageIntro title="Downloads" icon={FileDown} description="Find selected PhilHealth forms for membership, claims, and employers." />
+      <PageIntro title="Downloads" description="Find selected PhilHealth forms for membership, claims, and employers." />
       <section className="wrap section-block" aria-labelledby="find-form-heading">
         <div className="section-heading">
           <h2 id="find-form-heading">Find a form</h2>

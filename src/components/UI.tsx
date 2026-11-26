@@ -3,17 +3,12 @@ import { ChevronDown, ExternalLink, Search, type LucideIcon } from 'lucide-react
 
 export const iconProps = { 'aria-hidden': true as const, focusable: false as const, size: 19, strokeWidth: 1.8 }
 
-export function PageIntro({ title, description, icon: Icon }: { title: string; description: string; icon: LucideIcon }) {
+export function PageIntro({ title, description }: { title: string; description: string }) {
   return (
-    <section className="page-intro">
-      <div className="wrap intro-row">
-        <div>
-          <h1 tabIndex={-1} data-page-heading>{title}</h1>
-          <p>{description}</p>
-        </div>
-        <span className="intro-icon"><Icon {...iconProps} size={44} /></span>
-      </div>
-    </section>
+    <header className="wrap page-intro">
+      <h1 tabIndex={-1} data-page-heading>{title}</h1>
+      <p>{description}</p>
+    </header>
   )
 }
 
@@ -67,14 +62,5 @@ export function CategorySelect({ id, value, categories, onChange }: {
         <ChevronDown {...iconProps} size={16} />
       </div>
     </div>
-  )
-}
-
-export function Disclosure({ title, children }: { title: string; children: ReactNode }) {
-  return (
-    <details className="disclosure">
-      <summary>{title}<ChevronDown {...iconProps} /></summary>
-      <div className="disclosure-body">{children}</div>
-    </details>
   )
 }

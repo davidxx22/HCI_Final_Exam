@@ -1,4 +1,4 @@
-import { useEffect, useRef, type ReactNode } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import {
   ArrowRight, Briefcase, CircleAlert, ClipboardList, File, Heart, House,
@@ -13,7 +13,7 @@ const anniversaryArt = import.meta.env.BASE_URL + 'philhealth-anniversary.png'
 const offerings = [
   { title: 'Members', description: 'Learn about membership categories, premium payment schedules, and data amendment procedures tailored for each member type.', label: 'Explore Members', to: '/members', icon: Users },
   { title: 'Benefits', description: 'Comprehensive health packages covering primary care to catastrophic conditions including eligibility requirements and coverage guidelines.', label: 'View Benefits', to: '/benefits', icon: Heart },
-  { title: 'Online Services', description: 'Register, pay premiums, file claims, and locate the nearest office — all from the comfort of your home through our digital portal.', label: 'Go Online', to: links.services, icon: Monitor },
+  { title: 'Online Services', description: 'Find the Member Portal, case rates, premium payment, and other official digital services.', label: 'View Online Services', to: '/online-services', icon: Monitor },
   { title: 'Our Partners', description: 'We work with thousands of accredited hospitals, clinics, and health facilities nationwide to deliver accessible care for every Filipino.', label: 'Find Partners', to: '/partners', icon: House },
 ]
 
@@ -25,9 +25,9 @@ const updates = [
 ]
 
 const heroStats = [
-  { value: '60M+', label: 'Active Members' },
-  { value: '₱280B', label: 'Benefits Paid' },
-  { value: '5,000+', label: 'Partner Hospitals' },
+  { amount: 60, suffix: 'M+', label: 'Active Members' },
+  { amount: 280, prefix: '₱', suffix: 'B', label: 'Benefits Paid' },
+  { amount: 5000, suffix: '+', label: 'Partner Hospitals' },
 ]
 
 const coverageStats = [
@@ -59,10 +59,72 @@ function SectionHeading({ id, title, children }: {
   )
 }
 
-function Stats({ items, className }: { items: typeof heroStats; className: string }) {
+const statNumber = new Intl.NumberFormat('en-PH')
+
+function HeroStats() {
+  const stats = useRef<HTMLDListElement>(null)
+  const [progress, setProgress] = useState(1)
+
+  useLayoutEffect(() => {
+    const group = stats.current
+    const motion = window.matchMedia('(prefers-reduced-motion: no-preference)')
+    if (!group || !motion.matches || typeof IntersectionObserver === 'undefined') return
+
+    let frame = 0
+    let startTime: number | undefined
+    function tick(time: number) {
+      startTime ??= time
+      const elapsed = Math.min((time - startTime) / 900, 1)
+      setProgress(1 - (1 - elapsed) ** 3)
+      if (elapsed < 1) frame = requestAnimationFrame(tick)
+    }
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return
+      observer.disconnect()
+      frame = requestAnimationFrame(tick)
+    }, { threshold: .2 })
+
+    function finish() {
+      observer.disconnect()
+      cancelAnimationFrame(frame)
+      setProgress(1)
+    }
+
+    setProgress(0)
+    observer.observe(group)
+    motion.addEventListener('change', finish)
+    return () => {
+      observer.disconnect()
+      cancelAnimationFrame(frame)
+      motion.removeEventListener('change', finish)
+    }
+  }, [])
+
   return (
-    <dl className={className}>
-      {items.map(({ value, label }) => (
+    <dl className="landing-hero-stats" ref={stats}>
+      {heroStats.map(({ amount, prefix = '', suffix, label }) => {
+        const finalValue = prefix + statNumber.format(amount) + suffix
+        return (
+          <div key={label}>
+            <dt>{label}</dt>
+            <dd>
+              <span className="visually-hidden">{finalValue}</span>
+              <span className="stat-count" aria-hidden="true" data-final-value={finalValue}>
+                <span>{prefix + statNumber.format(Math.floor(amount * progress)) + suffix}</span>
+              </span>
+            </dd>
+          </div>
+        )
+      })}
+    </dl>
+  )
+}
+
+function CoverageStats() {
+  return (
+    <dl className="landing-coverage-stats">
+      {coverageStats.map(({ value, label }) => (
         <div key={label}>
           <dt>{label}</dt>
           <dd>{value}</dd>
@@ -114,7 +176,7 @@ export function Home() {
               <a className="button button-yellow" href={links.registration}>Become a member</a>
               <a className="button button-on-dark" href="#why-philhealth">Learn More</a>
             </div>
-            <Stats items={heroStats} className="landing-hero-stats" />
+            <HeroStats />
           </div>
           <figure className="landing-hero-art">
             <img src={anniversaryArt} alt="PhilHealth’s 31st anniversary: Ka-YAKAP ang Pilipino sa Kalusugang Segurado."
@@ -178,7 +240,7 @@ export function Home() {
               <Link className="button button-yellow" to="/members">Become a Member</Link>
             </div>
           </div>
-          <Stats items={coverageStats} className="landing-coverage-stats" />
+          <CoverageStats />
         </div>
       </section>
 

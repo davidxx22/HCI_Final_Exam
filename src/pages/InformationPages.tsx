@@ -1,43 +1,51 @@
 import { useSearchParams, Link } from 'react-router-dom'
 import {
-  BedDouble, Building2, ClipboardList, CreditCard,
-  Handshake, HeartPulse, Hospital, Landmark, Laptop, MapPin,
-  SearchX, ShieldPlus, Stethoscope, Users,
+  BedDouble, Building2, ClipboardList, CreditCard, Eye,
+  Hospital, Landmark, Laptop, MapPin, ShieldPlus, Stethoscope, Target, Users,
 } from 'lucide-react'
-import { Card, CategorySelect, Disclosure, iconProps, OfficialLink, PageIntro } from '../components/UI'
+import { Card, iconProps, OfficialLink, PageIntro } from '../components/UI'
 import { links } from '../content/philhealth'
 
 export function About() {
   return (
     <>
-      <PageIntro title="About Us" icon={Landmark} description="Learn what the Philippine Health Insurance Corporation does and how to get in touch." />
-      <section className="wrap section-block two-column">
-        <div>
-          <div className="section-heading">
-            <h2>About PhilHealth</h2>
-            <p>PhilHealth administers the National Health Insurance Program in the Philippines.</p>
+      <PageIntro title="About Us" description="The Philippine Health Insurance Corporation administers the National Health Insurance Program." />
+      <div className="wrap section-block">
+        <section aria-labelledby="philhealth-role">
+          <div className="section-heading"><h2 id="philhealth-role">PhilHealth’s role</h2></div>
+          <div className="card-grid">
+            <Card title="Mandate" icon={Landmark}>
+              <p>Manage the National Health Insurance Program and finance covered health services for members and their dependents.</p>
+            </Card>
+            <Card title="Vision" icon={Eye}>
+              <p>Every Filipino has health insurance protection and can count on health benefits when they need care.</p>
+            </Card>
+            <Card title="Mission" icon={Target}>
+              <p>Provide every Filipino with appropriate, high-quality health insurance they can afford.</p>
+            </Card>
           </div>
-          <Disclosure title="Mandate and functions">
-            <p>PhilHealth manages the national program and works with healthcare providers so members can use covered benefits.</p>
+          <div className="button-row about-sources">
             <OfficialLink href={links.mandate}>Read the official mandate</OfficialLink>
-          </Disclosure>
-          <Disclosure title="Vision, mission, and core values">
-            <p>PhilHealth’s mission centers on social health insurance and access to healthcare for Filipinos.</p>
-            <OfficialLink href={links.mission}>Read the official vision and mission</OfficialLink>
-          </Disclosure>
-        </div>
-        <div>
-          <h2 className="side-heading">Get in touch</h2>
-          <Card title="Contact PhilHealth" icon={MapPin} action={<OfficialLink href={links.contact}>View the official office directory</OfficialLink>}>
-            <p>Find a PhilHealth regional or local office and check its listed contact details.</p>
-          </Card>
-        </div>
-      </section>
+            <OfficialLink href={links.mission}>Read the vision, mission, and core values</OfficialLink>
+          </div>
+        </section>
+        <section className="related-panel about-contact" aria-labelledby="about-contact">
+          <div className="about-contact-copy">
+            <span className="icon-box"><MapPin {...iconProps} size={22} /></span>
+            <div>
+              <h2 id="about-contact" tabIndex={-1}>Get in touch</h2>
+              <p>Find a regional or local PhilHealth office and check its contact details.</p>
+            </div>
+          </div>
+          <OfficialLink className="button button-outline" href={links.contact}>View the official office directory</OfficialLink>
+        </section>
+      </div>
     </>
   )
 }
 
 const benefitCategories = [
+  { value: '', label: 'All categories' },
   { value: 'inpatient', label: 'Inpatient' },
   { value: 'outpatient', label: 'Outpatient' },
   { value: 'specialized', label: 'Specialized care' },
@@ -56,15 +64,22 @@ export function Benefits() {
   const displayed = category ? benefits.filter(item => item.category === category) : benefits
   return (
     <>
-      <PageIntro title="Benefits" icon={HeartPulse} description="Explore the types of care PhilHealth covers and find official package information." />
+      <PageIntro title="Benefits" description="Explore the types of care PhilHealth covers and find official package information." />
       <section className="wrap section-block">
-        <div className="section-heading"><h2>Browse by type of care</h2></div>
-        <div className="filters filters-compact">
-          <CategorySelect id="benefit-category" value={category} categories={benefitCategories}
-            onChange={value => setParams(value ? { category: value } : {}, { replace: true })} />
+        <div className="benefit-filter-heading">
+          <h2 id="benefit-filter-label">Browse by type of care</h2>
+          <p className="results-status" role="status">{displayed.length} {displayed.length === 1 ? 'category' : 'categories'} shown</p>
         </div>
-        <p className="results-status" role="status">{displayed.length} {displayed.length === 1 ? 'category' : 'categories'} shown</p>
-        <div className="card-grid">
+        <fieldset className="benefit-filter" aria-labelledby="benefit-filter-label">
+          {benefitCategories.map(({ value, label }) => (
+            <label key={value}>
+              <input className="visually-hidden" type="radio" name="benefit-category" value={value} checked={category === value}
+                onChange={() => setParams(value ? { category: value } : {}, { replace: true })} />
+              <span>{label}</span>
+            </label>
+          ))}
+        </fieldset>
+        <div className={category ? 'benefit-results-single' : 'card-grid'}>
           {displayed.map(item => (
             <Card key={item.title} title={item.title} icon={item.icon}
               action={<OfficialLink href={links.benefits + '#:~:text=' + encodeURIComponent(item.title)}>Read about {item.title.toLowerCase()}</OfficialLink>}>
@@ -91,7 +106,7 @@ const partners = [
 export function Partners() {
   return (
     <>
-      <PageIntro title="Partners" icon={Handshake} description="Find PhilHealth partners for healthcare, employment, electronic services, and collections." />
+      <PageIntro title="Partners" description="Find PhilHealth partners for healthcare, employment, electronic services, and collections." />
       <section className="wrap section-block">
         <div className="section-heading"><h2>Partner categories</h2></div>
         <div className="card-grid card-grid-two">
@@ -114,7 +129,7 @@ export function Partners() {
 export function Members() {
   return (
     <>
-      <PageIntro title="Members" icon={Users} description="Understand PhilHealth member categories and find the forms and resources for your next step." />
+      <PageIntro title="Members" description="Understand PhilHealth member categories and find the forms and resources for your next step." />
       <section className="wrap section-block">
         <div className="section-heading">
           <h2>Membership categories</h2>
@@ -142,7 +157,7 @@ export function Members() {
 export function NotFound() {
   return (
     <>
-      <PageIntro title="Page not found" icon={SearchX} description="This address doesn’t match a page in the prototype. Check the address or use one of the links below." />
+      <PageIntro title="Page not found" description="This address doesn’t match a page in the prototype. Check the address or use one of the links below." />
       <div className="wrap section-block button-row">
         <Link className="button button-primary" to="/">Go to Home</Link>
         <Link className="button button-outline" to="/downloads">Browse Downloads</Link>

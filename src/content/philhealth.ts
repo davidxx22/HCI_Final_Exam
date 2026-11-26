@@ -38,6 +38,108 @@ export const links = {
   instagram: 'https://www.instagram.com/team_philhealth/',
 }
 
+interface OnlineService {
+  title: string
+  description: string
+  features?: string[]
+  actions: { label: string; href: string }[]
+}
+
+export const serviceGroups: {
+  id: 'membership' | 'benefits' | 'contribution' | 'collection' | 'accreditation'
+  title: string
+  services: OnlineService[]
+}[] = [
+  {
+    id: 'membership',
+    title: 'Membership',
+    services: [
+      {
+        title: 'Member Portal',
+        description: 'View your PhilHealth records and contributions.',
+        features: ['Pay premiums online', 'View or print your Member Data Record (MDR)', 'Choose your YAKAP clinic'],
+        actions: [{ label: 'Register or sign in to Member Portal', href: 'https://memberinquiry.philhealth.gov.ph/member' }],
+      },
+      {
+        title: 'Electronic Group Enrollment System',
+        description: 'See PhilHealth’s advisory on the deactivation of the system for organized groups.',
+        actions: [{ label: 'Read the deactivation advisory (PDF)', href: official + '/eAdvisory/20260417_EGROUP-DEACTIVATION-ADVISORY.pdf' }],
+      },
+    ],
+  },
+  {
+    id: 'benefits',
+    title: 'Benefits',
+    services: [
+      {
+        title: 'Case Rates Search',
+        description: 'Look up official case rates and benefit packages.',
+        actions: [{ label: 'Search case rates', href: official + '/services/acr/' }],
+      },
+      {
+        title: 'Claims Eligibility Checking',
+        description: 'Healthcare providers can verify a member’s eligibility for benefits.',
+        actions: [{ label: 'Sign in to check claims eligibility', href: 'https://cec.philhealth.gov.ph/' }],
+      },
+    ],
+  },
+  {
+    id: 'contribution',
+    title: 'Contribution',
+    services: [
+      {
+        title: 'Electronic Premium Remittance System',
+        description: 'Employers can remit their PhilHealth contributions online.',
+        actions: [
+          { label: 'Sign in to EPRS', href: 'https://eprs01.philhealth.gov.ph/' },
+          { label: 'Open employer ePOAF', href: 'https://epoaf.philhealth.gov.ph/employer/' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'collection',
+    title: 'Collection',
+    services: [
+      {
+        title: 'Electronic Collection Reporting System',
+        description: 'Accredited collecting agents can submit their daily RF2 reports.',
+        actions: [{ label: 'Sign in to ECRS', href: 'https://ecrs.philhealth.gov.ph/' }],
+      },
+      {
+        title: 'SPA Generator',
+        description: 'Generate a Statement of Premium Account (SPA).',
+        actions: [
+          { label: 'Open SPA Generator', href: 'https://spagen.philhealth.gov.ph' },
+          { label: 'Read the SPA guide (PDF)', href: official + '/services/spagen/STEP-BY-STEP-SPAGEN-PROCEDURE.pdf' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'accreditation',
+    title: 'Accreditation',
+    services: [
+      {
+        title: 'Health Facilities',
+        description: 'Look up healthcare facilities and their accreditation status.',
+        actions: [
+          { label: 'Sign in to Health Facilities', href: 'https://ihcp.philhealth.gov.ph/' },
+          { label: 'How to register a facility', href: official + '/services/hci/' },
+        ],
+      },
+      {
+        title: 'Health Care Professionals',
+        description: 'Check accreditation or claims status and generate an electronic accreditation ID.',
+        actions: [
+          { label: 'Register or sign in as a professional', href: 'https://partners.philhealth.gov.ph/portal' },
+          { label: 'Watch the registration guide', href: 'https://drive.google.com/file/d/1VVCmF9b5CPs4ooPBO7swHIhlVK5PrNkT/view' },
+        ],
+      },
+    ],
+  },
+]
+
 export const formCategories = [
   { value: 'membership', label: 'Membership' },
   { value: 'claims', label: 'Claims' },

@@ -3,18 +3,19 @@
 ## Prototype
 
 - [x] Create the React, TypeScript, and Vite app with shared navigation, footer, styles, and UI components.
-- [x] Build Home with a campaign hero and shortcuts to common tasks.
-- [x] Build About Us with expandable sections and contact information.
+- [x] Build Home with a campaign hero, reduced-motion-aware counters, and shortcuts to common tasks.
+- [x] Build About Us with visible Mandate, Vision, and Mission cards and contact information.
 - [x] Build Benefits with category filtering and official detail links.
 - [x] Build Partners with partner categories and official directory links.
 - [x] Build Members with contributor categories and links to membership forms.
+- [x] Build a local Online Services directory with grouped links to official portals and guides.
 - [x] Build Downloads with form titles, codes, audiences, filtering, form details, and links to official PDFs.
 - [x] Implement no-results recovery and a recovery page for unknown routes.
 - [x] Document sources and demo steps in [UX notes](docs/UX-NOTES.md).
 
 ## Verification and report evidence
 
-- [x] Run the production build and check all six routes.
+- [x] Run the production build and check all seven routes.
 - [x] Verify desktop and mobile reflow, keyboard dismissal, and focus return.
 - [x] Check all routes at 640 CSS px, the layout width of a 1280 px window at 200% zoom.
 - [x] Spot check text, control border, and focus indicator contrast.

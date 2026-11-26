@@ -2,12 +2,13 @@
 
 ## Scope
 
-Maintain the six frontend prototype pages: Home, About Us, Benefits, Partners, Members, and Downloads. Use React, TypeScript, Vite, React Router, Lucide icons, and plain CSS. Keep data local and link separately to official PhilHealth services. The app handles public information only.
+Maintain the seven frontend prototype pages: Home, About Us, Benefits, Partners, Members, Online Services, and Downloads. Use React, TypeScript, Vite, React Router, Lucide icons, and plain CSS. Keep data local and link separately to official PhilHealth services. The app handles public information only.
 
 ## Design and behavior
 
 - Follow the group’s Figma visual direction with a green palette, yellow accents, a compact hero, and service cards. Keep user tasks prominent.
 - Use readable type, descriptive labels, and consistent components. Use icons with text where the meaning matters. Avoid emojis.
+- Balance page margins, section spacing, card padding, and grid gaps. Use shared spacing and alignment patterns, and check how they read at both desktop and mobile widths.
 - Use semantic HTML, keyboard controls, visible focus, meaningful image descriptions, and accessible names. Verify responsive layout and WCAG 2.1 AA contrast targets.
 - Keep form names and destinations tied to published sources. Use the full form title, audience, and format to prevent mistakes. Make dismiss, reset, and recovery actions behave as labeled.
 - Keep public URLs and structured form data in the content module and use the shared component and style layers.
@@ -15,7 +16,7 @@ Maintain the six frontend prototype pages: Home, About Us, Benefits, Partners, M
 
 ## Publishing
 
-After verifying each completed user-requested change, commit the intended files, push to `origin/main`, and verify the production deployment on Vercel.
+After verification, commit the intended files. Keep work requested on a separate branch on that branch. For changes intended for production, push to `origin/main` and verify the Vercel deployment.
 
 ## PAUSE and CONTINUE
 

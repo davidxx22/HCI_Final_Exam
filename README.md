@@ -1,6 +1,6 @@
 # PhilHealth HCI redesign
 
-A six-page student prototype for an HCI evaluation of PhilHealth’s public information website. It uses the group’s Figma design as a visual reference and makes common tasks easier to find, including membership information, benefit categories, accredited facilities, and downloadable forms.
+A seven-page student prototype for an HCI evaluation of PhilHealth’s public information website. It uses the group’s Figma design as a visual reference and makes common tasks easier to find, including membership information, benefit categories, accredited facilities, online services, and downloadable forms.
 
 ## Run locally
 
@@ -25,11 +25,11 @@ The production output is in `dist/`. Any future static host must route unknown p
 | Location | Purpose |
 | --- | --- |
 | `src/App.tsx` | Route table, shared navigation, page title and focus handling, and footer |
-| `src/pages/` | Six prototype pages and a fallback page |
-| `src/components/` | Shared cards, form controls, disclosures, page headings, and official links |
-| `src/content/` | Typed form records and official URLs |
+| `src/pages/` | Seven prototype pages and a fallback page |
+| `src/components/` | Shared cards, form controls, page headings, and official links |
+| `src/content/` | Typed form and service records and official URLs |
 | `src/styles/` | Shared colors, type, layout, and responsive rules |
-| `public/` | Local campaign artwork from PhilHealth |
+| `public/` | Local campaign artwork and the cropped PhilHealth favicon |
 
 The prototype uses React, TypeScript, Vite, React Router, Lucide, and plain CSS. It keeps filter state in the browser URL. Official forms and directories open on PhilHealth’s website. The Downloads list is a representative selection and links to the complete catalog.
 

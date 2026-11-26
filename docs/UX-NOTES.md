@@ -1,6 +1,6 @@
 # UX notes and demonstration guide
 
-This student prototype covers Home, About Us, Benefits, Partners, Members, and Downloads. It presents selected official information and links. The group can use it to illustrate recommendations from the original-site evaluation. Treat expected benefits as design hypotheses until the redesign is tested with participants.
+This student prototype covers Home, About Us, Benefits, Partners, Members, Online Services, and Downloads. It presents selected official information and links. The group can use it to illustrate recommendations from the original-site evaluation. Treat expected benefits as design hypotheses until the redesign is tested with participants.
 
 ## Demonstrate the three interaction heuristics
 
@@ -37,5 +37,6 @@ These comparisons are design evidence captured on November 24, 2026. Add the gro
 - [Group Figma reference](https://www.figma.com/proto/IF6adxRCmazFUqwbYPUw55/HCI-Assignment?page-id=489%3A217&node-id=489-256)
 - [PhilHealth Home](https://www.philhealth.gov.ph/) and [official anniversary artwork](https://www.philhealth.gov.ph/images/philhealth-31st-anniversary.png)
 - [PhilHealth About Us](https://www.philhealth.gov.ph/about_us/), [Benefits](https://www.philhealth.gov.ph/benefits/), [Partners](https://www.philhealth.gov.ph/partners/), [Members](https://www.philhealth.gov.ph/members/), and [Downloads](https://www.philhealth.gov.ph/downloads/)
+- [PhilHealth Online Services](https://www.philhealth.gov.ph/services/) for the service categories and destinations
 - [Jakob Nielsen’s ten usability heuristics](https://www.nngroup.com/articles/ten-usability-heuristics/)
 - [W3C Web Content Accessibility Guidelines 2.1](https://www.w3.org/TR/WCAG21/)
