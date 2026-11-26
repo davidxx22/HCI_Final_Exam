@@ -12,7 +12,7 @@ export function About() {
       <PageIntro title="About Us" description="The Philippine Health Insurance Corporation administers the National Health Insurance Program." />
       <div className="wrap section-block">
         <section aria-labelledby="philhealth-role">
-          <div className="section-heading"><h2 id="philhealth-role">PhilHealth’s role</h2></div>
+          <div className="section-heading" data-scroll-reveal><h2 id="philhealth-role">PhilHealth’s role</h2></div>
           <div className="card-grid">
             <Card title="Mandate" icon={Landmark}>
               <p>Manage the National Health Insurance Program and finance covered health services for members and their dependents.</p>
@@ -24,12 +24,12 @@ export function About() {
               <p>Provide every Filipino with appropriate, high-quality health insurance they can afford.</p>
             </Card>
           </div>
-          <div className="button-row about-sources">
+          <div className="button-row about-sources" data-scroll-reveal>
             <OfficialLink href={links.mandate}>Read the official mandate</OfficialLink>
             <OfficialLink href={links.mission}>Read the vision, mission, and core values</OfficialLink>
           </div>
         </section>
-        <section className="related-panel about-contact" aria-labelledby="about-contact">
+        <section className="related-panel about-contact" aria-labelledby="about-contact" data-scroll-reveal>
           <div className="about-contact-copy">
             <span className="icon-box"><MapPin {...iconProps} size={22} /></span>
             <div>
@@ -66,11 +66,11 @@ export function Benefits() {
     <>
       <PageIntro title="Benefits" description="Explore the types of care PhilHealth covers and find official package information." />
       <section className="wrap section-block">
-        <div className="benefit-filter-heading">
+        <div className="benefit-filter-heading" data-scroll-reveal>
           <h2 id="benefit-filter-label">Browse by type of care</h2>
           <p className="results-status" role="status">{displayed.length} {displayed.length === 1 ? 'category' : 'categories'} shown</p>
         </div>
-        <fieldset className="benefit-filter" aria-labelledby="benefit-filter-label">
+        <fieldset className="benefit-filter" aria-labelledby="benefit-filter-label" data-scroll-reveal>
           {benefitCategories.map(({ value, label }) => (
             <label key={value}>
               <input className="visually-hidden" type="radio" name="benefit-category" value={value} checked={category === value}
@@ -87,7 +87,7 @@ export function Benefits() {
             </Card>
           ))}
         </div>
-        <div className="related-panel">
+        <div className="related-panel" data-scroll-reveal>
           <div><h2>Need benefit claim forms?</h2><p>Browse forms by name or category, then open the official PDF.</p></div>
           <Link className="button button-outline" to="/downloads?category=claims">Find claim forms</Link>
         </div>
@@ -108,7 +108,7 @@ export function Partners() {
     <>
       <PageIntro title="Partners" description="Find PhilHealth partners for healthcare, employment, electronic services, and collections." />
       <section className="wrap section-block">
-        <div className="section-heading"><h2>Partner categories</h2></div>
+        <div className="section-heading" data-scroll-reveal><h2>Partner categories</h2></div>
         <div className="card-grid card-grid-two">
           {partners.map(item => (
             <Card key={item.title} title={item.title} icon={item.icon}
@@ -117,7 +117,7 @@ export function Partners() {
             </Card>
           ))}
         </div>
-        <div className="related-panel">
+        <div className="related-panel" data-scroll-reveal>
           <div><h2>Looking for a health facility?</h2><p>Use the official directory to check accredited facilities.</p></div>
           <OfficialLink className="button button-outline" href={links.facilities}>Find an accredited facility</OfficialLink>
         </div>
@@ -131,7 +131,7 @@ export function Members() {
     <>
       <PageIntro title="Members" description="Understand PhilHealth member categories and find the forms and resources for your next step." />
       <section className="wrap section-block">
-        <div className="section-heading">
+        <div className="section-heading" data-scroll-reveal>
           <h2>Membership categories</h2>
           <p>Use the official membership page for current classifications and requirements.</p>
         </div>
@@ -145,7 +145,7 @@ export function Members() {
             <p>People in eligible categories whose premiums are subsidized under the program.</p>
           </Card>
         </div>
-        <div className="related-panel">
+        <div className="related-panel" data-scroll-reveal>
           <div><h2>Register or update your details</h2><p>Review the form titles and choose the version for your situation.</p></div>
           <Link className="button button-primary" to="/downloads?category=membership"><ClipboardList {...iconProps} /> View membership forms</Link>
         </div>
@@ -158,7 +158,7 @@ export function NotFound() {
   return (
     <>
       <PageIntro title="Page not found" description="This address doesn’t match a page in the prototype. Check the address or use one of the links below." />
-      <div className="wrap section-block button-row">
+      <div className="wrap section-block button-row" data-scroll-reveal>
         <Link className="button button-primary" to="/">Go to Home</Link>
         <Link className="button button-outline" to="/downloads">Browse Downloads</Link>
       </div>

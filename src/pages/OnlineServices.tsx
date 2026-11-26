@@ -17,7 +17,7 @@ export function OnlineServices() {
       <div className="wrap section-block service-directory">
         {serviceGroups.map(({ id, title, services }) => (
           <section key={id} aria-labelledby={id}>
-            <h2 id={id} className="service-group-heading" tabIndex={-1}>{title}</h2>
+            <h2 id={id} className="service-group-heading" tabIndex={-1} data-scroll-reveal>{title}</h2>
             <div className={services.length > 1 ? 'card-grid card-grid-two' : undefined}>
               {services.map(service => (
                 <Card key={service.title} title={service.title} icon={groupIcons[id]}

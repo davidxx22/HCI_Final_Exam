@@ -15,6 +15,7 @@
   --yellow: #fbc02d;
   --pale-yellow: #fff2c2;
   --radius: 1.15rem;
+  --interaction-duration: .22s;
   --header-height: clamp(3.75rem, 4.63vw, 5rem);
 }
 * { box-sizing: border-box; }
@@ -191,15 +192,21 @@ h2[tabindex="-1"] { scroll-margin-top: calc(var(--header-height) + 1.25rem); }
 }
 .footer-legal nav { display: flex; flex-wrap: wrap; gap: .25rem 1rem; }
 @media (prefers-reduced-motion: no-preference) {
-  .button, .main-nav a, .benefit-filter label span { transition: background-color .18s ease, color .18s ease, border-color .18s ease; }
-  .page-content { animation: page-enter .24s ease-out; }
-  .card, .landing-resource { transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease; }
+  .button, .main-nav a, .benefit-filter label span {
+    transition-property: background-color, color, border-color;
+    transition-duration: var(--interaction-duration);
+  }
+  .page-content { animation: page-enter .32s ease-out; }
+  .card, .landing-resource {
+    transition-property: transform, border-color, box-shadow;
+    transition-duration: var(--interaction-duration);
+  }
 
-  [data-scroll-state="revealed"] { animation: content-reveal .36s cubic-bezier(.22, 1, .36, 1) backwards; }
+  [data-scroll-state="revealed"] { animation: content-reveal .6s cubic-bezier(.25, .65, .35, 1) backwards; }
   [data-scroll-state="revealed"]:focus-within { opacity: 1 !important; translate: none !important; }
-  :is(.card-grid, [data-scroll-stagger]) > [data-scroll-state="revealed"]:nth-child(4n + 2) { animation-delay: .045s; }
-  :is(.card-grid, [data-scroll-stagger]) > [data-scroll-state="revealed"]:nth-child(4n + 3) { animation-delay: .09s; }
-  :is(.card-grid, [data-scroll-stagger]) > [data-scroll-state="revealed"]:nth-child(4n + 4) { animation-delay: .135s; }
+  :is(.card-grid, [data-scroll-stagger]) > [data-scroll-state="revealed"]:nth-child(4n + 2) { animation-delay: .055s; }
+  :is(.card-grid, [data-scroll-stagger]) > [data-scroll-state="revealed"]:nth-child(4n + 3) { animation-delay: .11s; }
+  :is(.card-grid, [data-scroll-stagger]) > [data-scroll-state="revealed"]:nth-child(4n + 4) { animation-delay: .165s; }
 
   @keyframes page-enter {
     from { opacity: .85; }

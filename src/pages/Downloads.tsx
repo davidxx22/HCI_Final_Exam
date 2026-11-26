@@ -68,11 +68,11 @@ export function Downloads() {
     <>
       <PageIntro title="Downloads" description="Find selected PhilHealth forms for membership, claims, and employers." />
       <section className="wrap section-block" aria-labelledby="find-form-heading">
-        <div className="section-heading">
+        <div className="section-heading" data-scroll-reveal>
           <h2 id="find-form-heading">Find a form</h2>
           <p>Search by name or code, or narrow the list by category.</p>
         </div>
-        <div className="filters" role="search" aria-label="Form filters">
+        <div className="filters" role="search" aria-label="Form filters" data-scroll-reveal>
           <SearchField id="form-search" label="Search forms" value={query} placeholder="For example, PMRF"
             inputRef={search} onChange={value => setFilters(value, category)} />
           <CategorySelect id="form-category" value={category} categories={formCategories}
@@ -102,14 +102,14 @@ export function Downloads() {
             ))}
           </div>
         ) : (
-          <div className="empty-state">
+          <div className="empty-state" data-scroll-reveal>
             <span className="icon-box"><SearchX {...iconProps} size={24} /></span>
             <h3>{emptyTitle}</h3>
             <p>Try a different keyword or clear your filters to see all forms in this list.</p>
             <button className="button button-primary" type="button" onClick={clearFilters}>Clear filters</button>
           </div>
         )}
-        <div className="related-panel">
+        <div className="related-panel" data-scroll-reveal>
           <div><h2>Looking for another document?</h2><p>Use the official directory for the complete list of forms and publications.</p></div>
           <OfficialLink className="button button-outline" href={links.downloads}>View all official downloads</OfficialLink>
         </div>

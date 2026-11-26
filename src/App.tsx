@@ -120,7 +120,7 @@ function Footer() {
 }
 
 export function App() {
-  const { pathname, hash } = useLocation()
+  const { pathname, search, hash } = useLocation()
   const lastPath = useRef(pathname)
   const main = useRef<HTMLElement>(null)
 
@@ -156,13 +156,12 @@ export function App() {
         observer.unobserve(target)
       })
     }, { rootMargin: '0px 0px -24px 0px' })
-    targets.forEach(target => observer.observe(target))
+    targets.forEach(target => {
+      if (!target.hasAttribute('data-scroll-state')) observer.observe(target)
+    })
 
-    return () => {
-      observer.disconnect()
-      targets.forEach(target => target.removeAttribute('data-scroll-state'))
-    }
-  }, [pathname])
+    return () => observer.disconnect()
+  }, [pathname, search])
 
   return (
     <>
